@@ -23,7 +23,7 @@ resource "aws_instance" "ec2_instance" {
 
 resource "aws_key_pair" "my_key" {
   key_name   = "terraform_key"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDauDIWsXD4eFZiDH4f+7XrqIdywSoZjO/J3RYUJ/vTVrMGAfMWOkq00xFmFgAKPm8DFlri5iXSZAI3Vr19Ddh5qJgsMsYZuKIdpP2tZNyW1dhtO4fw4LLS89KscynoAAD0Srn0L/iux4MQ+n+ToRVvGvO5wgzfpuO5k4/90YfQNB5lCODEYdgabZTQ0mg+5O9rdIvKd7N5+f79Z8Wnjt/LQ+PdbcRp4aOb8YWqQyn4a8HXh+pO1orjRwD7uL57vzA/TARfkHChnB3b8b4pjFfTb4QXv8dGcbMuJXMyFxZbEIyNt93z/iaJK9c6AHtJpPMOBbHRX3W7UIOxrxqr9o23"
+  public_key = "insert-your-public-key-here" #you can hardcode it by pasting or doing file('path-here')
 }
 
 resource "aws_security_group" "web_sg" {
@@ -33,7 +33,7 @@ resource "aws_security_group" "web_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [var.my_ip]
+    cidr_blocks = [var.my_ip] #only you should ssh to the ec2 instace :), regardless, the priv key is there as added security
   }
   egress {
     from_port   = 0
